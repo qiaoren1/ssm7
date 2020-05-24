@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cm.mapper.SysParamMapper">
+  <resultMap id="BaseResultMap" type="com.cm.entity.SysParam">
+    <id column="sys_param_id" jdbcType="BIGINT" property="sysParamId" />
+    <result column="sys_param_field" jdbcType="VARCHAR" property="sysParamField" />
+    <result column="sys_param_value" jdbcType="VARCHAR" property="sysParamValue" />
+    <result column="sys_param_text" jdbcType="VARCHAR" property="sysParamText" />
+    <result column="sys_param_type" jdbcType="VARCHAR" property="sysParamType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sys_param_id, sys_param_field, sys_param_value, sys_param_text, sys_param_type
+  </sql>
+
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_param8
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_param8
+    where sys_param_id = #{sysParamId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_param8
+    where sys_param_id = #{sysParamId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cm.entity.SysParam">
+    insert into sys_param8 (sys_param_id, sys_param_field, sys_param_value, 
+      sys_param_text, sys_param_type)
+    values (#{sysParamId,jdbcType=BIGINT}, #{sysParamField,jdbcType=VARCHAR}, #{sysParamValue,jdbcType=VARCHAR}, 
+      #{sysParamText,jdbcType=VARCHAR}, #{sysParamType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cm.entity.SysParam">
+    insert into sys_param8
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysParamId != null">
+        sys_param_id,
+      </if>
+      <if test="sysParamField != null">
+        sys_param_field,
+      </if>
+      <if test="sysParamValue != null">
+        sys_param_value,
+      </if>
+      <if test="sysParamText != null">
+        sys_param_text,
+      </if>
+      <if test="sysParamType != null">
+        sys_param_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysParamId != null">
+        #{sysParamId,jdbcType=BIGINT},
+      </if>
+      <if test="sysParamField != null">
+        #{sysParamField,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParamValue != null">
+        #{sysParamValue,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParamText != null">
+        #{sysParamText,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParamType != null">
+        #{sysParamType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cm.entity.SysParam">
+    update sys_param8
+    <set>
+      <if test="sysParamField != null">
+        sys_param_field = #{sysParamField,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParamValue != null">
+        sys_param_value = #{sysParamValue,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParamText != null">
+        sys_param_text = #{sysParamText,jdbcType=VARCHAR},
+      </if>
+      <if test="sysParamType != null">
+        sys_param_type = #{sysParamType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sys_param_id = #{sysParamId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cm.entity.SysParam">
+    update sys_param8
+    set sys_param_field = #{sysParamField,jdbcType=VARCHAR},
+      sys_param_value = #{sysParamValue,jdbcType=VARCHAR},
+      sys_param_text = #{sysParamText,jdbcType=VARCHAR},
+      sys_param_type = #{sysParamType,jdbcType=VARCHAR}
+    where sys_param_id = #{sysParamId,jdbcType=BIGINT}
+  </update>
+</mapper>
